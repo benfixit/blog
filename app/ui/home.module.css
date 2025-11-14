@@ -1,0 +1,51 @@
+.latest, .trending, .popular {
+    margin-bottom: 80px;
+}
+
+.latest > div {
+    display: flex;
+    gap: 40px;
+
+    img {
+        border-radius: 10px;
+        flex: 2;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+}
+
+.trending > div {
+    display: flex;
+    gap: 10px;
+
+    img {
+        border-radius: 10px;
+        flex: 1;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+}
+
+.popular > div {
+    display: flex;
+    gap: 10px;
+
+    img {
+        border-radius: 10px;
+        flex: 1;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+}
