@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Footer } from "@benfixit/kedu";
+import { Banner } from "./components/Banner";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -29,8 +30,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <main>
+          <Banner />
           {/* <Nav /> */}
-          {children}
+          <section className="content_wrapper">
+            {children}
+          </section>
           <Footer />
         </main>
       </body>

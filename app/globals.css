@@ -27,5 +27,9 @@ body {
 }
 
 main {
-  padding: 0 80px;
+  background-color: #fcfcfc;
+}
+
+.content_wrapper {
+  padding: 80px 200px;
 }

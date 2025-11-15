@@ -1,85 +1,44 @@
 import Image from "next/image";
+import { getBlogPosts } from "@/app/utils/file"
+import { getNWords } from "./utils/string";
 import styles from "@/app/ui/home.module.css";
 
 export default function Home() {
+  const posts = getBlogPosts();
+  console.log("Home page >>> ", posts)
   return (
-      <>
+      <div className={styles.home_container}>
         <section className={styles.latest}>
-          <h2>Latest</h2>
-          <div>
-            <Image src="/babel_typescript.webp" width={400} height={300} alt="Latest blog post" />
-            <div>
-              <span>Date</span>
-              <h2>Setting up Babel and Typescript</h2>
-              <p>Typescript has it's own compiler but there are times when you might want to use a different compiler due to personal preference or project requirements. In this article, we will learn how to use a compiler like Babel to compile our Typescript file to Javascript so that our code can run on any browser whilst the function of the Typescript compiler `tsc` will be limited to type checking our code.</p>
-              <a href="">Read article</a>
-            </div>
-        </div>
+          {posts.map((post) => {
+            const { metadata: { title, thumbnail }, content, slug } = post;
+            const description = getNWords(content, 25);
+            return (
+              <div className={styles.blog_post} key={slug}>
+                <Image src={thumbnail} width={250} height={150} alt={title} />
+                <div>
+                  <h3>{title}</h3>
+                  <p>{description}...</p>
+                  <a href={`/post/${slug}`}>Read article</a>
+                </div>
+              </div>
+            );
+          })}
         </section>
-        <section className={styles.trending}>
-          <h2>Trending</h2>
+        <aside className={styles.popular}>
+          <h3>Popular</h3>
           <div>
-            <div>
-              <Image src="/babel_typescript.webp" width={300} height={300} alt="Latest blog post" />
-              <div>
-                <span>Date</span>
-                <h2>Setting up Babel and Typescript</h2>
-                <p>Typescript has it's own compiler but there are times when you might want to use a different compiler due to personal preference or project requirements. In this article, we will learn how to use a compiler like Babel to compile our Typescript file to Javascript so that our code can run on any browser whilst the function of the Typescript compiler `tsc` will be limited to type checking our code.</p>
-                <a href="">Read article</a>
+            {posts.map((post) => {
+            const { metadata: { title, thumbnail }, slug } = post;
+
+            return (
+              <div className={styles.popular_post} key={slug}>
+                <Image src={thumbnail} width={70} height={70} alt={title} />
+                <a href={`/post/${slug}`}><h5>{title}</h5></a>
               </div>
-            </div>
-            <div>
-              <Image src="/babel_typescript.webp" width={300} height={300} alt="Latest blog post" />
-              <div>
-                <span>Date</span>
-                <h2>Setting up Babel and Typescript</h2>
-                <p>Typescript has it's own compiler but there are times when you might want to use a different compiler due to personal preference or project requirements. In this article, we will learn how to use a compiler like Babel to compile our Typescript file to Javascript so that our code can run on any browser whilst the function of the Typescript compiler `tsc` will be limited to type checking our code.</p>
-                <a href="">Read article</a>
-              </div>
-            </div>
-            <div>
-              <Image src="/babel_typescript.webp" width={300} height={300} alt="Latest blog post" />
-              <div>
-                <span>Date</span>
-                <h2>Setting up Babel and Typescript</h2>
-                <p>Typescript has it's own compiler but there are times when you might want to use a different compiler due to personal preference or project requirements. In this article, we will learn how to use a compiler like Babel to compile our Typescript file to Javascript so that our code can run on any browser whilst the function of the Typescript compiler `tsc` will be limited to type checking our code.</p>
-                <a href="">Read article</a>
-              </div>
-            </div>
+            );
+          })}
           </div>
-        </section>
-        <section className={styles.popular}>
-          <h2>Popular</h2>
-          <div>
-            <div>
-              <Image src="/babel_typescript.webp" width={350} height={350} alt="Latest blog post" />
-              <div>
-                <span>Date</span>
-                <h2>Setting up Babel and Typescript</h2>
-                <p>Typescript has it's own compiler but there are times when you might want to use a different compiler due to personal preference or project requirements. In this article, we will learn how to use a compiler like Babel to compile our Typescript file to Javascript so that our code can run on any browser whilst the function of the Typescript compiler `tsc` will be limited to type checking our code.</p>
-                <a href="">Read article</a>
-              </div>
-            </div>
-            <div>
-              <Image src="/babel_typescript.webp" width={350} height={350} alt="Latest blog post" />
-              <div>
-                <span>Date</span>
-                <h2>Setting up Babel and Typescript</h2>
-                <p>Typescript has it's own compiler but there are times when you might want to use a different compiler due to personal preference or project requirements. In this article, we will learn how to use a compiler like Babel to compile our Typescript file to Javascript so that our code can run on any browser whilst the function of the Typescript compiler `tsc` will be limited to type checking our code.</p>
-                <a href="">Read article</a>
-              </div>
-            </div>
-            <div>
-              <Image src="/babel_typescript.webp" width={350} height={350} alt="Latest blog post" />
-              <div>
-                <span>Date</span>
-                <h2>Setting up Babel and Typescript</h2>
-                <p>Typescript has it's own compiler but there are times when you might want to use a different compiler due to personal preference or project requirements. In this article, we will learn how to use a compiler like Babel to compile our Typescript file to Javascript so that our code can run on any browser whilst the function of the Typescript compiler `tsc` will be limited to type checking our code.</p>
-                <a href="">Read article</a>
-              </div>
-            </div>
-          </div>
-        </section>
-      </>
+        </aside>
+      </div>
   );
 }
