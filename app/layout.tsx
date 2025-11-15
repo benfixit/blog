@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Footer } from "kedu";
+import { Footer } from "@benfixit/kedu";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
