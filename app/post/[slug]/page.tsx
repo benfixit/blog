@@ -10,7 +10,11 @@ export default async function Page({
 }
  
 export function generateStaticParams() {
-  return [{ slug: 'setting-up-babel-and-typescript' }]
+  return [
+    { slug: 'setting-up-babel-and-typescript' },
+    { slug: 'laravel-model-binding' },
+    { slug: 'two-pointer-technique' }
+  ]
 }
  
 export const dynamicParams = false

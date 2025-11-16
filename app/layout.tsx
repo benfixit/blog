@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Footer } from "@benfixit/kedu";
 import { Banner } from "./components/Banner";
+import { Footer } from "./components/Footer";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
