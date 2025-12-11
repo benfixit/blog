@@ -6,14 +6,21 @@ description: The two-pointer technique is an important algorithmic approach that
 ---
 
 The two-pointer technique is an important algorithmic approach that is used to optimize solutions to a specific type of string and array problem. Variations of this technique include searching for a pair of numbers within an array that satisfies a certain condition or comparing indices within a string or an array. It is indeed a must-have in one's programming toolkit.
-Note: In order to use this technique to solve array problems, we often need to sort the array.
+
+> Note: In order to use this technique to solve array problems, we often need to sort the array.
+
 There are several ways to implement this technique, let's have a look at the most common method:
-Define two pointers i and j, start them at the edges of the input, and move them inwards until they meet.
+
+> Define two pointers i and j, start them at the edges of the input, and move them inwards until they meet.
+
 Translating the above to the program:
-Start left at the first index 0, and right at the last index len(input) - 1.
-Using a while loop, perform a logic depending on the problem you are trying to solve and increment left and|or decrement right until they both become equal.
+
+1. Start left at the first index 0, and right at the last index `len(input) - 1`.
+2. Using a while loop, perform a logic depending on the problem you are trying to solve and increment left and|or decrement right until they both become equal.
 
 Let's see some pseudocode.
+
+```python
 def twoPointer(arr):
   left = 0
   right = len(arr) - 1
@@ -24,14 +31,25 @@ def twoPointer(arr):
     1. left++
     2. right-- 
     3. left++ and right--
+```
+
 This algorithm is often used as an optimization technique to improve a quadratic time solution to a linear one.
+
 Let's take a look at some applications of this algorithm to get a grasp of its importance.
-Example 1:
-Given a string, return true if it is a palindrome, or false otherwise.
-A string is a palindrome if it reads the same forward and backward. i.e. if the string is the same after reversing it. e.g racecar, civic, madam, etc.
-Approach 1: Naive
+
+> ***Example 1:***
+>
+> ***Given a string, return true if it is a palindrome, or false otherwise.***
+>
+> ***A string is a palindrome if it reads the same forward and backward. i.e. if the string is the same after reversing it. e.g racecar, civic, madam, etc.***
+
+### Approach 1: Naive
+
 The first approach that comes to mind would be to reverse the string and compare it against the original string, if they match, the string is a palindrome, otherwise, it is not.
-Python code:
+
+**Python code:**
+
+```python
 def isPalindrome(word):
     # convert to lowercase
     new_word = word.lower()
@@ -50,14 +68,22 @@ word3 = "Madam"
 print(isPalindrome(word1))  # Output: True
 print(isPalindrome(word2))  # Output: False
 print(isPalindrome(word3))  # Output: True
-Complexity analysis
-Time complexity: Reversing the string takes O(n) time, where n is the length of the string. The string comparison also takes O(n) time. Thus, the overall time complexity is O(n) time.
-Space complexity: Additional space is needed to store the reversed string. Hence the overall space complexity is O(n).
+```
+
+**Complexity analysis**
+- Time complexity: Reversing the string takes `O(n)` time, where n is the length of the string. The string comparison also takes `O(n)` time. Thus, the overall time complexity is `O(n)` time.
+
+- Space complexity: Additional space is needed to store the reversed string. Hence the overall space complexity is `O(n)`.
 
 The naive approach is pretty straightforward, however, it is not optimal. There is room for improvement as we can avoid using the extra space.
-Approach 2: Two Pointer
+
+### Approach 2: Two Pointer
+
 This technique leverages the fact that for a palindromic string, the first character equals the last character, and the second character equals the second to the last character and so on. If we place a pointer at the first character and another at the last character, we can simultaneously and efficiently check that corresponding characters are equal. If we encounter a mismatch, we can immediately return false, otherwise we keep going until the pointers collide, at which point we return true.
-Python code:
+
+**Python code:**
+
+```python
 def isPalindrome(word):
     left = 0  # start first pointer from the beginning
     right = len(word) - 1  # start second pointer from the end
@@ -84,18 +110,29 @@ word3 = "Madam"
 print(isPalindrome(word1))  # Output: True
 print(isPalindrome(word2))  # Output: False
 print(isPalindrome(word3))  # Output: True
-Complexity analysis
-Time complexity: The overall time complexity for this approach is still O(n) as we still have to check each character in the string.
-Space complexity: This approach is very efficient as it uses only O(1) space. No matter how big the input is, we will only use two integer variables to track the pointers.
+```
 
-Example 2:
-This question is similar to the Two Sum II question on Leetcode.
-Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, return true if there are two distinct numbers such that add up to a specific target number, or false otherwise.
-Your solution must use only constant extra space
-Note: The reason why the two-pointer technique would work for this problem is because the array is sorted. In a case, where the array is not already sorted, the first line of action would be to sort the array first before applying the two-pointer technique. Bear in mind that sorting usually runs in O(nLogn) time.
-Approach 1: Bruteforce
+**Complexity analysis**
+
+- Time complexity: The overall time complexity for this approach is still `O(n)` as we still have to check each character in the string.
+- Space complexity: This approach is very efficient as it uses only `O(1)` space. No matter how big the input is, we will only use two integer variables to track the pointers.
+
+> ***Example 2:***
+> ***This question is similar to the Two Sum II question on Leetcode.***
+>
+> ***Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, return true if there are two distinct numbers such that add up to a specific target number, or false otherwise.***
+> 
+> ***Your solution must use only constant extra space***
+>
+> Note: The reason why the two-pointer technique would work for this problem is because the array is sorted. In a case, where the array is not already sorted, the first line of action would be to sort the array first before applying the two-pointer technique. Bear in mind that sorting usually runs in `O(nLogn)` time.
+
+### Approach 1: Bruteforce
+
 The bruteforce approach involves using a nested loop to check all the possible pairs in the array to see if any of them add up to the target.
-Python code:
+
+**Python code:**
+
+```python
 def hasPairSum(arr, target):
     for i in range(len(arr)):
         for j in range(i + 1, len(arr)):
@@ -107,13 +144,20 @@ def hasPairSum(arr, target):
 print(hasPairSum([1, 2, 3, 10], 5))  # True
 print(hasPairSum([1, 2, 3, 10], 7))  # False
 print(hasPairSum([1, 2, 3, 10], 12))  # True
-Complexity analysis
-Time complexity: This approach takes O(n ^ 2) time because for every number in the array, we have to add it to the other numbers to find the target.
-Space complexity: No additional space was used, so, O(1).
+```
 
-Approach 2: Two Pointer
+**Complexity analysis**
+
+- Time complexity: This approach takes `O(n ^ 2)` time because for every number in the array, we have to add it to the other numbers to find the target.
+- Space complexity: No additional space was used, so, `O(1)`.
+
+### Approach 2: Two Pointer
+
 Because the array is sorted, we can use the two pointer technique to solve this problem. If we place a pointer at the first index and another at the last index, we can sum both numbers and if the result is greater than the target, we can decrease the second pointer but if the result is less than the target, we increase the first pointer. We will keep doing this until both pointers meet, at which point we return false.
-Python code:
+
+**Python code:**
+
+```python
 def hasPairSum(arr, target):
     left = 0  # start first pointer at index 0
     right = len(arr) - 1  # start second pointer at the last index
@@ -133,9 +177,14 @@ def hasPairSum(arr, target):
 print(hasPairSum([1, 2, 3, 10], 5))  # True
 print(hasPairSum([1, 2, 3, 10], 7))  # False
 print(hasPairSum([1, 2, 3, 10], 12))  # True
-Complexity analysis
-Time complexity: The overall time complexity for this approach is O(n) as we only have to go through each item in the array once.
-Space complexity: No additional space was used, so, O(1).
+```
 
-Concluding Remarks:
-We've seen how we can use the two pointer technique to optimize the solution to certain types of problems. It's very important to see the techniques we applied as guidelines rather than rigid rules. A different problem might require a slight variation in the techniques we applied, for example, the three-sum problem, which requires the use of three pointers.
+**Complexity analysis**
+
+- Time complexity: The overall time complexity for this approach is `O(n)` as we only have to go through each item in the array once.
+- Space complexity: No additional space was used, so, `O(1)`.
+
+### Concluding Remarks:
+We've seen how we can use the two pointer technique to optimize the solution to certain types of problems. 
+It's very important to see the techniques we applied as guidelines rather than rigid rules. 
+A different problem might require a slight variation in the techniques we applied, for example, the [three-sum problem](https://leetcode.com/problems/3sum/description/), which requires the use of three pointers.

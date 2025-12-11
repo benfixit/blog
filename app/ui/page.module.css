@@ -37,6 +37,26 @@
             color: #990000;
         }
     }
+
+    blockquote {
+        border-left: thick solid black;
+        padding: 4px 0 4px 16px;
+        margin-bottom: 20px;
+        background-color: #f8f8f8;
+
+        * {
+            margin: 0;
+        }
+
+        p {
+            margin-bottom: 8px;
+        }
+    }
+
+    code:not(pre > code) {
+        background-color: #f2f2f2;
+        padding: 2px 4px;
+    }
 }
 
 .controls {
