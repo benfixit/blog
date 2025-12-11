@@ -1,7 +1,5 @@
 import styles from "@/app/ui/page.module.css";
 
-console.log("syles ::: ", styles)
-
 export default async function Page({
   params,
 }: {
