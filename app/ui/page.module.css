@@ -32,5 +32,26 @@
     a {
         color: #0000EE;
         text-decoration: none;
+
+        &:hover {
+            color: #990000;
+        }
+    }
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+        color: #0000EE;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+
+        &:hover {
+            color: #990000;
+        }
     }
 }

@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { getBlogPosts } from "@/app/utils/file"
-import { getMinutesRead } from "./utils/string";
+import { getBlogPosts, getMinutesRead } from "@/app/utils";
 import styles from "@/app/ui/home.module.css";
+import { usePosts } from "./store/PostsProvider";
 
 export default function Home() {
   const posts = getBlogPosts();

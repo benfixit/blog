@@ -1,9 +1,13 @@
+//@ts-nocheck
 import type { Metadata } from "next";
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
 import { Geist, Geist_Mono } from "next/font/google";
+import Nav from "@/app/components/Nav";
+import Footer from "@/app/components/Footer";
+import { PostsProvider } from "@/app/store/PostsProvider";
+import { getBlogPosts } from "@/app/utils";
 import "./globals.css";
 import './stackoverflow-dark.min.css';
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,17 +29,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const posts = getBlogPosts();
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <main className="global_wrapper">
-          <Nav />
-          <section>
-            {children}
-          </section>
-          <Footer />
+          <PostsProvider value={{ posts }}>
+            <Nav />
+            <section>
+              {children}
+            </section>
+            <Footer />
+          </PostsProvider>
         </main>
       </body>
     </html>
