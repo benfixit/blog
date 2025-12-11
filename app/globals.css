@@ -14,7 +14,7 @@ body {
 }
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: system-ui, Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -26,10 +26,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-main {
-  background-color: #fafafa;
+.global_wrapper {
+    padding: 0 48px;
+    min-height: 100vh;
+    background-color: #ffffff;
 }
 
-.content_wrapper {
-  padding: 80px 200px;
+@media (min-width: 1440px) {
+    .global_wrapper {
+        padding: 0 200px;
+    }
+}
+
+@media (min-width: 1920px) {
+    .global_wrapper {
+        padding: 0 480px;
+    }
+
 }

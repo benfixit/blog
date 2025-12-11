@@ -1,12 +1,20 @@
+import styles from "@/app/ui/page.module.css";
+
+console.log("syles ::: ", styles)
+
 export default async function Page({
   params,
 }: {
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const { default: Post } = await import(`@/content/${slug}.mdx`)
- 
-  return <Post />
+  const { default: Post } = await import(`@/content/${slug}.mdx`); 
+
+  return (
+    <main className={styles.page}>
+      <Post />
+    </main>
+  );
 }
  
 export function generateStaticParams() {

@@ -2,6 +2,7 @@
 title: Laravel model binding
 created: "2025-11-15"
 thumbnail: /laravel.jpg
+description: Model binding is certainly one of the coolest things in Laravel.
 ---
 
 # Laravel's Model Binding - Part 1.
@@ -13,22 +14,22 @@ Route binding comes in two flavours:
 2. Explicit binding
 
 
-## Implicit Binding:
+### Implicit Binding:
 Laravel automatically resolves Eloquent models that match a route segment. For example, say I have a model called User and a controller called UserController. To get a user, I can define my route as follows:
 In my routes file, web.php
-```
-Route::get('/user/{user}, [
-    'uses' => 'UserController@show,
-]);
+```php
+    Route::get('/user/{user}, [
+        'uses' => 'UserController@show,
+    ]);
 ```
 In my controller, UserController.php, I can then do:
-```
+```php
 public function show(User $user) {
     return view('show', ['user' => $user]);
 }
 ```
 Remember that before now, you had to do:
-```
+```php
 public function show($id) {
     $user = User::findOrFail($id);
     return view('show', ['user' => $user]);

@@ -1,20 +1,7 @@
 .footer {
-    text-align: center;
+    flex: 1;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    border-top: thin solid #888888;
-    padding: 16px;
-
-    ul {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-        justify-content: center;
-
-
-        li {
-            list-style: none;
-        }
-    }
+    justify-content: space-between;
+    border-top: thin solid #0f0f0f;
+    padding: 40px 0;
 }
