@@ -9,9 +9,9 @@ export default async function Page({
   const { default: Post } = await import(`@/content/${slug}.mdx`); 
 
   return (
-    <main className={styles.page}>
+    <section className={styles.wrapper}>
       <Post />
-    </main>
+    </section>
   );
 }
  

@@ -8,6 +8,7 @@
     position: sticky;
     top: 0;
     background-color: #ffffff;
+    z-index: 1;
 
     h1 {
         a {
