@@ -6,21 +6,21 @@ export default function Home() {
   const posts = getBlogPosts();
 
   return (
-    <section className={styles.wrapper}>
+    <section className={styles.wrapper} suppressHydrationWarning={true}>
       {posts.map(post => {
         const { metadata: { title, thumbnail, description, created }, slug, content } = post;
         const date = new Date(created).toDateString()
         const minsRead = getMinutesRead(content);
 
         return (
-          <div key={slug}>
-            <div>
+          <a key={slug} href={`post/${slug}`}>
+            <span>
               <Image src={thumbnail} alt={title} fill />
-            </div>
-            <h3><a href={`post/${slug}`}>{title}</a></h3>
+            </span>
+            <span>{title}</span>
             <span>{date} - {minsRead}</span>
-            <p>{description}</p>
-          </div>
+            <span>{description}</span>
+          </a>
         );
           
       })}

@@ -1,10 +1,66 @@
+:root {
+    --column-gap: 28px;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: var(--column-gap);
     padding: 36px 0;
 
-    div {
+    > a {
+        display: block;
+        cursor: pointer;
+        flex: 1;
+        margin-bottom: 32px;
+        text-decoration: none;
+
+        &:hover {
+            img {
+                outline: solid thin #990000;
+            }
+
+            span:nth-child(2) {
+                color: #990000;
+            }
+        }
+
+
+        span:first-child {
+            display: block;
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/8;
+            margin-bottom: 16px;
+
+            img {
+                object-fit: cover;
+                border-radius: 4px;
+            }
+        }
+
+        span:nth-child(2) {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #0f0f0f;
+        }
+
+        span:nth-child(3) {
+            font-size: 13px;
+            color: #555555;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        span:nth-child(4) {
+            font-size: 14px;
+            color: #0f0f0f;
+        }
+    }
+
+    /* div {
         flex: 1;
         margin-bottom: 32px;
 
@@ -38,7 +94,7 @@
         p {
             font-size: 14px;
         }
-    }
+    } */
 }
 
 @media (min-width: 768px) {
@@ -46,8 +102,9 @@
         flex-direction: row;
         flex-wrap: wrap;
 
-        div {
-            flex-basis: calc(33% - 60px);
+        > a {
+            flex-grow: unset;
+            flex-basis: calc((100% - (2 * var(--column-gap))) / 3);
         }
     }
 }
