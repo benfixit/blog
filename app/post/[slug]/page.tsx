@@ -47,7 +47,10 @@ export function generateStaticParams() {
     { slug: 'laravel-model-binding' },
     { slug: 'two-pointer-technique' },
     { slug: 'video-tutorials-vs-documentation-vs-books' },
-    { slug: 'dynamic-context-using-usestate-and-usecontext' }
+    { slug: 'dynamic-context-using-usestate-and-usecontext' },
+    { slug: 'contains-duplicates' },
+    { slug: 'swap-variables' },
+    { slug: 'test' }
   ]
 }
  

@@ -1,0 +1,185 @@
+---
+title: Contains Duplicate
+created: "2025-12-12"
+thumbnail: /contains-duplicate.png
+description: Different approaches to check if an array contains duplicates.
+published: true
+---
+
+## Problem statement
+Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
+**Example 1:**
+
+```python
+Input: nums = [1,2,3,1]
+
+Output: true
+```
+
+[Leetcode link](https://leetcode.com/problems/contains-duplicate/description)
+
+## Approach 1: Brute Force
+
+**Intuition**
+
+We can loop through the array using a nested loop to check every pair of numbers in the input and return true if any pair has equal values. 
+This is the most intuitive approach because but it is also the least efficient since it examines every combination.
+
+**Algorithm**
+
+1. Iterate through the array using two nested loops to check all pairs.
+2. If any pair of elements has the same value, return true.
+3. If all pairs are checked and no duplicates are found, return false.
+
+**Solution**
+
+<CodeSwitcher
+  samples={{
+    'Python': `
+from typing import List
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        for i in range(0, len(nums)):
+            for j in range(i + 1, len(nums)):
+                if nums[i] == nums[j]:
+                    return True
+
+        return False
+    `,
+    'JavaScript': `
+var containsDuplicate = function(nums) {
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            if (nums[i] === nums[j]) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+};
+    `
+  }}
+/>
+
+#### Time complexity: 
+Because for each item, we are looping through every item, the time complexity is `O(N^2)`.
+
+#### Space complexity: 
+We did not use any extra space to store or process items, so, the space complexity is `O(1)`.
+
+
+## Approach 2: Sorting
+
+**Intuition**
+
+We can sort the numbers in ascending or descending order and then compare each number with the number that comes before it. This approach works because sorting the numbers will make duplicates stay next to each other. This is more efficient that approach 1.
+
+**Algorithm**
+
+1. Sort the array in ascending or decreasing order.
+2. Iterate through the array starting from index 1. 
+3. Compare the current number with the previous number.
+4. If both numbers are equal, we have found a duplicate — return True.
+5. If the loop finishes without detecting equal numbers, return False.
+
+**Solution**
+
+<CodeSwitcher
+  samples={{
+    'Python': `
+from typing import List
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        sorted_nums = sorted(nums)
+        for i in range(1, len(sorted_nums)):
+            if sorted_nums[i] == sorted_nums[i - 1]:
+                    return True
+
+        return False
+    `,
+    'JavaScript': `
+var containsDuplicate = function(nums) {
+    const sortedNums = nums.sort();
+
+    for (let i = 1; i < sortedNums.length; i++) {
+        if (sortedNums[i - 1] === sortedNums[i]) {
+            return true;
+        }
+    }
+
+    return false;
+};
+    `
+  }}
+/>
+
+#### Time complexity: 
+The time complexity is `O(NLogN)` because we sorted the input.
+
+#### Space complexity: 
+The space complexity is `O(1)` or `O(N)` depending on whether or not the sorting was in-place.
+
+> **Note**
+> In some languages, sorting modifies the input data. Be careful of the side effects this might have on your program. 
+> In most cases, it is adviced to make a deep copy of the input and then performing sorting on the deep copy.
+
+
+## Approach 2: Sorting
+
+**Intuition**
+
+We can sort the numbers in ascending or descending order and then compare each number with the number that comes before it. This approach works because sorting the numbers will make duplicates stay next to each other. This is more efficient that approach 1.
+
+**Algorithm**
+
+1. Sort the array in ascending or decreasing order.
+2. Iterate through the array starting from index 1. 
+3. Compare the current number with the previous number.
+4. If both numbers are equal, we have found a duplicate — return True.
+5. If the loop finishes without detecting equal numbers, return False.
+
+**Solution**
+
+<CodeSwitcher
+  samples={{
+    'Python': `
+from typing import List
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        sorted_nums = sorted(nums)
+        for i in range(1, len(sorted_nums)):
+            if sorted_nums[i] == sorted_nums[i - 1]:
+                    return True
+
+        return False
+    `,
+    'JavaScript': `
+var containsDuplicate = function(nums) {
+    const sortedNums = nums.sort();
+
+    for (let i = 1; i < sortedNums.length; i++) {
+        if (sortedNums[i - 1] === sortedNums[i]) {
+            return true;
+        }
+    }
+
+    return false;
+};
+    `
+  }}
+/>
+
+#### Time complexity: 
+The time complexity is `O(NLogN)` because we sorted the input.
+
+#### Space complexity: 
+The space complexity is `O(1)` or `O(N)` depending on whether or not the sorting was in-place.
+
+> **Note**
+> In some languages, sorting modifies the input data. Be careful of the side effects this might have on your program. 
+> In most cases, it is adviced to make a deep copy of the input and then performing sorting on the deep copy.
