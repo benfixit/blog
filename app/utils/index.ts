@@ -37,7 +37,7 @@ export const getBlogPosts = (): Array<PostType> => {
             content,
             metadata
         }
-    });
+    }).filter(post => !!post.metadata.published);
 }
 
 export const prevIndex = (index: number, min: number): number => {

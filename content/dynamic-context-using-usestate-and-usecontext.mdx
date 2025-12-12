@@ -1,0 +1,46 @@
+---
+title: Dynamic Context using useState and useContext
+created: "2025-12-12"
+thumbnail: /dynamic-context-using-usestate-and-usecontext.png
+description: In our world of software engineering, there are several resources that can be used to learn something new.
+published: false
+---
+
+According to the [react documentation](https://reactjs.org/docs/hooks-state.html#whats-a-hook), hooks are functions that lets you "hook into" React features. In this article, we will be discussing about two (2) of those functions, useState and useContext and how you can use them to your advantage while building your React application.
+
+### useState
+This is probably the most commonly used hook as it lets you add state to your function components. It effectively does what `this.state and this.setState` does for class components. It accepts an initial value and returns an array of state variable and a function that can be used to set the value of the state variable.
+
+```javascript
+import { useState } from "react"
+const [count, setCount] = useState(0);
+```
+
+### useContext
+This hook accepts a context object i.e the result from `React.createContext` and returns the current context value in the context.
+
+```javascript
+import { useContext, createContext } from "react"
+const MyContext = createContext({ count: 0 });
+const value = useContext(MyContext);
+```
+
+## Putting it together
+Create a theme context using `createContext`.
+
+```javascript
+import { createContext } from "react";
+
+const themes = {
+    light: {
+        foreground: "#000000",
+        background: "#eeeeee"
+    },
+    dark: {
+        foreground: "#ffffff",
+        background: "#222222"
+    }
+}
+
+const DefaultContext = createContext(themes.dark)
+```

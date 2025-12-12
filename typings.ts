@@ -9,4 +9,5 @@ export type PostMetadataType = {
     created: string;
     thumbnail: string;
     description: string;
+    published: boolean;
 }

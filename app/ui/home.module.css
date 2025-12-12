@@ -45,5 +45,9 @@
     .wrapper {
         flex-direction: row;
         flex-wrap: wrap;
+
+        div {
+            flex-basis: calc(33% - 60px);
+        }
     }
 }
