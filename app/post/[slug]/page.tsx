@@ -1,6 +1,7 @@
 import styles from "@/app/ui/page.module.css";
-import { getBlogPosts } from "@/app/utils";
+import { getBlogPosts, getMinutesRead } from "@/app/utils";
 import Link from "next/link";
+import Image from "next/image";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 
 export default async function Page({
@@ -16,11 +17,19 @@ export default async function Page({
   const prevIndex = Math.max(postIndex - 1, 0);
   const nextIndex = Math.min(postIndex + 1, posts.length - 1);
 
+  const currentPost = posts[postIndex];
   const prevPost = posts[prevIndex].metadata.title;
   const nextPost = posts[nextIndex].metadata.title;
 
   return (
     <>
+      <section className={styles.caption}>
+        <div>
+          <Image src={currentPost.metadata.thumbnail} alt={currentPost.metadata.title} fill />
+        </div>
+        <h1>{currentPost.metadata.title}</h1>
+        <span>{new Date(currentPost.metadata.created).toDateString()} - {getMinutesRead(currentPost.content)}</span>
+      </section>
       <section className={styles.wrapper}>
         <Post />
       </section>
