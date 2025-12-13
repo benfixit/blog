@@ -1,8 +1,9 @@
 .wrapper {
     border-radius: 8px;
     margin-bottom: 16px;
+    position: relative;
 
-    > div {
+    > div:first-child {
         /*background-color: #303136;*/
         background-color: var(--background-color);
         border-top-left-radius: 8px;

@@ -1,0 +1,19 @@
+.wrapper {
+    position: absolute;
+    top: 60px;
+    right: 24px;
+
+    svg {
+        cursor: pointer;
+        height: 24px;
+        width: 24px;
+    }
+}
+
+.check {
+    fill: #009900;
+}
+
+.copy {
+    fill: #ffffff;
+}
