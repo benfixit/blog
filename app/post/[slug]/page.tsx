@@ -46,11 +46,11 @@ export function generateStaticParams() {
     { slug: 'setting-up-babel-and-typescript' },
     { slug: 'laravel-model-binding' },
     { slug: 'two-pointer-technique' },
-    { slug: 'video-tutorials-vs-documentation-vs-books' },
-    { slug: 'dynamic-context-using-usestate-and-usecontext' },
+    // { slug: 'video-tutorials-vs-documentation-vs-books' },
+    // { slug: 'dynamic-context-using-usestate-and-usecontext' },
     { slug: 'contains-duplicates' },
-    { slug: 'swap-variables' },
-    { slug: 'test' }
+    // { slug: 'swap-variables' },
+    // { slug: 'test' }
   ]
 }
  

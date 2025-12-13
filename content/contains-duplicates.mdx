@@ -183,3 +183,61 @@ The space complexity is `O(1)` or `O(N)` depending on whether or not the sorting
 > **Note**
 > In some languages, sorting modifies the input data. Be careful of the side effects this might have on your program. 
 > In most cases, it is adviced to make a deep copy of the input and then performing sorting on the deep copy.
+
+
+## Approach 3: Hash Set
+
+**Intuition**
+
+We can take advantage of the constant lookup time for sets. We will iterate through the items and add them to a set, but before we add an
+item, we will check if they already exist in the set, and if the do, return True. After adding all the items, we can then return False.
+
+
+**Algorithm**
+
+1. Create an empty Set to store the numbers.
+2. Iterate through the array. 
+3. Check if the current number already exist in the set.
+4. If the number exists in the set, return True.
+5. If the number does not exist in the set, add it to the set.
+6. When we are done with the iteration, return False.
+
+**Solution**
+
+<CodeSwitcher
+  samples={{
+    'Python': `
+from typing import List
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        num_set = set()
+        for num in nums:
+            if num in num_set:
+                return True
+            num_set.add(num)
+
+        return False
+    `,
+    'JavaScript': `
+var containsDuplicate = function(nums) {
+    const numSet = new Set()
+
+    for (let i = 0; i < nums.length; i++) {
+        if (numSet.has(nums[i])) {
+            return true;
+        }
+        numSet.add(nums[i])
+    }
+
+    return false;
+};
+    `
+  }}
+/>
+
+#### Time complexity: 
+The time complexity is `O(N)`.
+
+#### Space complexity: 
+The space complexity is `O(N)`.

@@ -29,15 +29,14 @@ export const getBlogPosts = (): Array<PostType> => {
         const rawContent = fs.readFileSync(path.join(contentPath, file), 'utf-8');
 
         const { content, data } = graymatter(rawContent);
-        const metadata = data as unknown as PostMetadataType;
-        
+        const metadata = data as unknown as PostMetadataType;        
 
         return {
             slug,
             content,
             metadata
         }
-    }).filter(post => !!post.metadata.published);
+    }).filter(post => post.metadata.published === true);
 }
 
 export const prevIndex = (index: number, min: number): number => {
