@@ -5,7 +5,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import 'react-tabs/style/react-tabs.css';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import styles from "./CodeSwitcher.module.css";
+import styles from "@/app/ui/codeswitcher.module.css";
 
 const CodeSwitcher = ({ samples }) => {
     const [activeLang, setActiveLang] = useState(Object.keys(samples)[0]);

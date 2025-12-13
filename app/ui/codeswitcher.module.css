@@ -3,7 +3,8 @@
     margin-bottom: 16px;
 
     > div {
-        background-color: #303136;
+        /*background-color: #303136;*/
+        background-color: var(--background-color);
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
         display: flex;

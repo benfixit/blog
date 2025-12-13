@@ -2,22 +2,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: thin solid black;
+    border-bottom: thin solid var(--color);
     width: 100%;
     padding: 36px 0;
     position: sticky;
     top: 0;
-    background-color: #ffffff;
+    background-color: var(--background-color);
     z-index: 1;
 
     h1 {
         a {
             font-size: 36px;
             font-weight: bold;
-            background-color: #efefef;
+            background-color: var(--secondary-background-color);
             padding: 4px 16px;
             border-radius: 8px;
-            color: #0f0f0f;
+            color: var(--color);
             text-decoration: none;
         }
     }
@@ -28,16 +28,13 @@
         align-items: center;
         column-gap: 12px;
 
-        a {
-            border: thin solid #0f0f0f;
-            border-radius: 8px;
-            padding: 4px 12px;
-            text-decoration: none;
-            color: #0f0f0f;
-            font-size: 14px;
-
-            &:hover {
-                background-color: #dfdfdf;
+        button {
+            border: none;
+            background-color: var(--background-color);
+            cursor: pointer;
+            svg {
+                width: 24px;
+                height: 24px;
             }
         }
     }

@@ -1,5 +1,6 @@
 //@ts-nocheck
 import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
 import { Geist, Geist_Mono } from "next/font/google";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
@@ -7,6 +8,7 @@ import { PostsProvider } from "@/app/store/PostsProvider";
 import { getBlogPosts } from "@/app/utils";
 import "./globals.css";
 import './stackoverflow-dark.min.css';
+
 
 
 const geistSans = Geist({
@@ -32,19 +34,19 @@ export default function RootLayout({
   const posts = getBlogPosts();
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning
       >
-        <main className="global_wrapper">
-          <PostsProvider value={{ posts }}>
-            <Nav />
-            <section>
-              {children}
-            </section>
-            <Footer />
-          </PostsProvider>
-        </main>
+        <ThemeProvider>
+          <main className="global_wrapper">
+              <Nav />
+              <section>
+                {children}
+              </section>
+              <Footer />
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );

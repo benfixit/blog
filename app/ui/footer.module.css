@@ -2,6 +2,6 @@
     flex: 1;
     display: flex;
     justify-content: space-between;
-    border-top: thin solid #0f0f0f;
+    border-top: thin solid var(--color);;
     padding: 40px 0;
 }

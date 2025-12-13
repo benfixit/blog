@@ -1,5 +1,5 @@
 .caption {
-    border-bottom: thin solid #cccccc;
+    border-bottom: thin solid var(--color);
     padding-bottom: 24px;
 
     div {
@@ -15,7 +15,8 @@
 
     span {
         font-size: 14px;
-        color: #777777;
+        /* color: #777777; */
+        color: var(--secondary-color);
     }
 }
 
@@ -51,7 +52,7 @@
     }
 
     a {
-        color: #0000EE;
+        /* color: #869FCB; */
         text-decoration: none;
 
         &:hover {
@@ -60,10 +61,11 @@
     }
 
     blockquote {
-        border-left: thick solid black;
+        border-left: thick solid var(--color);
         padding: 4px 0 4px 16px;
         margin-bottom: 20px;
-        background-color: #f8f8f8;
+        background-color: var(--secondary-background-color);
+        /* background-color: #f8f8f8; */
 
         * {
             margin: 0;
@@ -75,7 +77,8 @@
     }
 
     code:not(pre > code) {
-        background-color: #f2f2f2;
+        background-color: var(--secondary-background-color);;
+        /* background-color: #f2f2f2; */
         padding: 2px 4px;
     }
 }
@@ -86,7 +89,7 @@
     align-items: center;
 
     a {
-        color: #0000EE;
+        color: #3872E0;
         display: flex;
         align-items: center;
         text-decoration: none;

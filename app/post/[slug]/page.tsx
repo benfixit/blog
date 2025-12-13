@@ -55,8 +55,8 @@ export function generateStaticParams() {
     // { slug: 'video-tutorials-vs-documentation-vs-books' },
     // { slug: 'dynamic-context-using-usestate-and-usecontext' },
     { slug: 'contains-duplicates' },
+    // { slug: 'valid-anagram' },
     // { slug: 'swap-variables' },
-    // { slug: 'test' }
   ]
 }
  
