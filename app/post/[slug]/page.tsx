@@ -1,8 +1,9 @@
-import styles from "@/app/ui/page.module.css";
-import { getBlogPosts, getMinutesRead } from "@/app/utils";
 import Link from "next/link";
 import Image from "next/image";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import NotFound from "@/app/components/NotFound";
+import { getBlogPosts, getMinutesRead } from "@/app/utils";
+import styles from "@/app/ui/page.module.css";
 
 export default async function Page({
   params,
@@ -17,7 +18,12 @@ export default async function Page({
   const prevIndex = Math.max(postIndex - 1, 0);
   const nextIndex = Math.min(postIndex + 1, posts.length - 1);
 
+  if (postIndex < 0) {
+    return <NotFound />;
+  }
+
   const currentPost = posts[postIndex];
+  
   const prevPost = posts[prevIndex].metadata.title;
   const nextPost = posts[nextIndex].metadata.title;
 

@@ -36,7 +36,9 @@ export const getBlogPosts = (): Array<PostType> => {
             content,
             metadata
         }
-    }).filter(post => post.metadata.published === true);
+    })
+    .filter(post => post.metadata.published === true)
+    .sort((postA, postB) => new Date(postB.metadata.created).getTime() - new Date(postA.metadata.created).getTime());
 }
 
 export const prevIndex = (index: number, min: number): number => {
