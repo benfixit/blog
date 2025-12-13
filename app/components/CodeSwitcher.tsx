@@ -17,10 +17,7 @@ const CodeSwitcher = ({ samples }) => {
                     <button
                         key={lang}
                         onClick={() => setActiveLang(lang)}
-                        style={{
-                            backgroundColor: activeLang === lang ? '#000000' : 'inherit',
-                            borderBottom: activeLang === lang ? '1px solid #ccc' : 'none',
-                        }}
+                        className={activeLang === lang ? styles.active_button : styles.inactive_button}
                     >
                         {lang}
                     </button>
