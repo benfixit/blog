@@ -7,9 +7,11 @@ import CopyTextComponent from "./CopyCodeSample";
 import 'react-tabs/style/react-tabs.css';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styles from "@/app/ui/codeswitcher.module.css";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useLang } from "../store/LangProvider";
 
 const CodeSwitcher = ({ samples }) => {
-    const [activeLang, setActiveLang] = useState(Object.keys(samples)[0]);
+    const { lang: activeLang, setLang } = useLang();
     const codeSample = samples[activeLang].trim();
 
     return (
@@ -18,7 +20,7 @@ const CodeSwitcher = ({ samples }) => {
                 {Object.keys(samples).map((lang) => (
                     <button
                         key={lang}
-                        onClick={() => setActiveLang(lang)}
+                        onClick={() => setLang(lang)}
                         className={activeLang === lang ? styles.active_button : styles.inactive_button}
                     >
                         {lang}

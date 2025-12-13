@@ -5,11 +5,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
 import { PostsProvider } from "@/app/store/PostsProvider";
+import { LangProvider } from "./store/LangProvider";
 import { getBlogPosts } from "@/app/utils";
 import "./globals.css";
 import './stackoverflow-dark.min.css';
-
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,13 +38,15 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning
       >
         <ThemeProvider>
-          <main className="global_wrapper">
-              <Nav />
-              <section>
-                {children}
-              </section>
-              <Footer />
-          </main>
+          <LangProvider>
+            <main className="global_wrapper">
+                <Nav />
+                <section>
+                  {children}
+                </section>
+                <Footer />
+            </main>
+          </LangProvider>
         </ThemeProvider>
       </body>
     </html>
