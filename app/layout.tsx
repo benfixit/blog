@@ -6,6 +6,7 @@ import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
 import { PostsProvider } from "@/app/store/PostsProvider";
 import { LangProvider } from "./store/LangProvider";
+import ThemeWrapper from "./store/ThemeWrapper";
 import { getBlogPosts } from "@/app/utils";
 import "./globals.css";
 import './stackoverflow-dark.min.css';
@@ -33,11 +34,11 @@ export default function RootLayout({
   const posts = getBlogPosts();
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider>
+        <ThemeWrapper>
           <LangProvider>
             <main className="global_wrapper">
                 <Nav />
@@ -47,7 +48,7 @@ export default function RootLayout({
                 <Footer />
             </main>
           </LangProvider>
-        </ThemeProvider>
+        </ThemeWrapper>
       </body>
     </html>
   );

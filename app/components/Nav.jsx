@@ -18,9 +18,7 @@ const Nav = () => {
                 <a href="/">CI</a>
             </h1>
             <ul>
-                <button onClick={toggleTheme}>
-                    {theme === "dark" ? <FaSun /> : <FaMoon />}
-                </button>
+                <button onClick={toggleTheme}>{theme === "dark" ? <FaSun /> : <FaMoon />}</button>
             </ul>
         </nav>
     );

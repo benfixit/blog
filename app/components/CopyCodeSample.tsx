@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaCopy, FaCircleCheck } from 'react-icons/fa6';
+import { FaCopy, FaCheck } from 'react-icons/fa6';
 import styles from '@/app/ui/copycodesample.module.css';
 
 const CopyTextComponent = ({ textToCopy } : { textToCopy: string }) => {
@@ -19,7 +19,9 @@ const CopyTextComponent = ({ textToCopy } : { textToCopy: string }) => {
 
   return (
     <div className={styles.wrapper}>
-        {isCopied ? <FaCircleCheck className={styles.check} /> : <FaCopy onClick={copyToClipboard} className={styles.copy} />}
+        <button onClick={copyToClipboard}>
+          {isCopied ? <FaCheck className={styles.check} /> : <FaCopy className={styles.copy} />}
+        </button>
     </div>
   );
 };
