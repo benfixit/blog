@@ -6,7 +6,6 @@ import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
 import { PostsProvider } from "@/app/store/PostsProvider";
 import { LangProvider } from "./store/LangProvider";
-import ThemeWrapper from "./store/ThemeWrapper";
 import { getBlogPosts } from "@/app/utils";
 import "./globals.css";
 import './stackoverflow-dark.min.css';
@@ -26,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased`} suppressHydrationWarning>
-        <ThemeWrapper>
+        <ThemeProvider>
           <LangProvider>
             <main className="global_wrapper">
                 <Nav />
@@ -36,7 +35,7 @@ export default function RootLayout({
                 <Footer />
             </main>
           </LangProvider>
-        </ThemeWrapper>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -7,7 +7,8 @@ const ThemeWrapper = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => {
         setIsMounted(true);
-    });
+        console.log("RUNNING")
+    }, []);
 
     if (!isMounted) {
         return <>{children}</>

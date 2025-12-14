@@ -12,6 +12,10 @@ const Nav = () => {
         setTheme(newTheme);
     }
 
+    if (!theme) {
+        return null;
+    }
+
     return (
         <nav className={styles.nav}>
             <h1>
