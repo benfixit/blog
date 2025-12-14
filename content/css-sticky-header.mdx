@@ -1,0 +1,34 @@
+---
+title: Sticky headers with CSS
+created: "2025-12-14"
+thumbnail: /sticky_header.jpg
+description: Make a header sticky using only CSS.
+published: true
+---
+
+The most modern and efficient way to create a sticky header with CSS is by using `position: sticky`.
+
+Say, you have the following HTML structure:
+
+```HTML
+<header class="sticky_header">
+    <nav>
+        <!-- Navigation links -->
+    </nav>
+</header>
+<main>
+    <!-- Main page content -->
+</main>
+```
+
+The CSS below will make the header tag sticky.
+
+```CSS
+.sticky_header {
+    position: sticky; /* Toggles the header between relative and fixed behavior */
+    top: 0; /* The point where the element 'sticks' to the viewport */
+    padding: 10px 0;
+    z-index: 100;    /* Could be any number. It ensures that the header appears above other content */
+    width: 100%;      /* Ensures that the headers spans the full width of the viewport */
+}
+```

@@ -11,16 +11,6 @@ import { getBlogPosts } from "@/app/utils";
 import "./globals.css";
 import './stackoverflow-dark.min.css';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
   title: "Devemeka Blog",
   description: "Here, I talk about things that I learned.",
@@ -35,9 +25,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`antialiased`} suppressHydrationWarning>
         <ThemeWrapper>
           <LangProvider>
             <main className="global_wrapper">
