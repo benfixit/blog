@@ -23,8 +23,8 @@ export default function RootLayout({
   const posts = getBlogPosts();
 
   return (
-    <html lang="en">
-      <body className={`antialiased`} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`antialiased`}>
         <ThemeProvider>
           <LangProvider>
             <main className="global_wrapper">
