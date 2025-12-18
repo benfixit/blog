@@ -3,7 +3,7 @@ title: Valid Anagram
 created: "2025-12-13"
 thumbnail: /valid-anagram.png
 description: Different approaches to check if a string is a valid anagram.
-published: false
+published: true
 ---
 
 ## Problem statement
@@ -25,14 +25,13 @@ Output: true
 
 **Intuition**
 
-We can loop through the array using a nested loop to check every pair of numbers in the input and return true if any pair has equal values. 
-This is the most intuitive approach because but it is also the least efficient since it examines every combination.
+Going by the definition of an anagram, if we sort both strings, it means the sorted strings will be equal.
 
 **Algorithm**
 
-1. Iterate through the array using two nested loops to check all pairs.
-2. If any pair of elements has the same value, return true.
-3. If all pairs are checked and no duplicates are found, return false.
+1. If the lengths of the two strings differ, return false immediately because they cannot be anagrams.
+2. Sort the strings.
+3. Compare them. If they are equal, return true, otherwise, false.
 
 **Solution**
 
@@ -42,38 +41,133 @@ This is the most intuitive approach because but it is also the least efficient s
 from typing import List
 
 class Solution:
-    def containsDuplicate(self, nums: List[int]) -> bool:
-        for i in range(0, len(nums)):
-            for j in range(i + 1, len(nums)):
-                if nums[i] == nums[j]:
-                    return True
-
-        return False
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+                return False
+        
+        return sorted(s) == sorted(t)
     `,
     'JavaScript': `
-var containsDuplicate = function(nums) {
-    for (let i = 0; i < nums.length; i++) {
-        for (let j = i + 1; j < nums.length; j++) {
-            if (nums[i] === nums[j]) {
-                return true;
+var isAnagram = function(s, t) {
+    if (s.length !== t.length) {
+        return false;
+    }
+    
+    const newS = s.split("").sort().join("");
+    const newT = t.split("").sort().join("");
+
+    return newS === newT;
+};
+    `
+  }}
+/>
+
+#### Time complexity: 
+The time complexity is `O(NLogN + MLogM)` because we sorted the input.
+
+#### Space complexity: 
+The space complexity is `O(1)` or `O(N + M)` depending on whether or not the sorting was in-place.
+
+
+## Approach 2: Hash Map
+
+**Intuition**
+
+If two strings are anagrams, they must use the same characters with the same frequencies.
+So, instead of sorting, we can count the frequency of each character in the strings and use hash maps to store their frequency count.
+If both maps contain the same characters with the same frequencies, it means they are anagrams.
+
+**Algorithm**
+
+1. If the lengths of the two strings differ, return false immediately because they cannot be anagrams.
+2. Create two hash maps to store the character frequencies for each string.
+3. Create a frequency counter helper method that takes a string as an input and returns it frequency count
+    - Create an empty hash map to store the frequency count of each character in the string.
+    - Loop through the string and count the frequency of each character.
+    - Return the hash map.
+3. Compare the frequency counters of each string. If they are equal, return true, otherwise, false.
+
+**Solution**
+
+<CodeSwitcher
+  samples={{
+    'Python': `
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+        
+        sMap = self.__createMap(s)
+        tMap = self.__createMap(t)
+
+        for ch in tMap:
+            if ch not in sMap or tMap[ch] != sMap[ch]:
+                return False
+        
+        return True
+    
+    # creates a map of the string character against their frequency of occurence
+    def __createMap(self, s: str) -> dict:
+        map = dict()
+
+        for ch in s:
+            map[ch] = map.get(ch, 0) + 1
+
+        return map
+
+# Short solution using the Counter API
+class Solution2:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+                return False
+        
+        return Counter(s) == Counter(t)
+    `,
+    'JavaScript': `
+var isAnagram = function(s, t) {    
+    if (s.length !== t.length) {
+        return false;
+    }
+
+    const createFreqMap = (str) => {
+        const data = {};
+        for (let i = 0; i < str.length; i++) {
+            const ch = str[i];
+            if (!data.hasOwnProperty(ch)) {
+                data[ch] = 0;
             }
+
+            data[ch] += 1
+        }
+
+        return data;
+    }
+
+    const sMap = createFreqMap(s);
+    const tMap = createFreqMap(t);
+
+    for (let ch in sMap) {
+        if (sMap[ch] !== tMap[ch]) {
+            return false;
         }
     }
 
-    return false;
+    return true;
 };
     `
   }}
 />
 
 #### Time complexity: 
-Because for each item, we are looping through every item, the time complexity is `O(N^2)`.
+The time complexity is `O(N + M)`.
 
 #### Space complexity: 
-We did not use any extra space to store or process items, so, the space complexity is `O(1)`.
+The space complexity is `O(1)` since we have at most 26 different characters.
+
+> Where *n* is the length of string *s* and *m* is the length of string *t*.
 
 
-## Approach 2: Sorting
+## Approach 3: Hash Table
 
 **Intuition**
 
@@ -124,162 +218,3 @@ The time complexity is `O(NLogN)` because we sorted the input.
 
 #### Space complexity: 
 The space complexity is `O(1)` or `O(N)` depending on whether or not the sorting was in-place.
-
-> **Note**
-> In some languages, sorting modifies the input data. Be careful of the side effects this might have on your program. 
-> In most cases, it is adviced to make a deep copy of the input and then performing sorting on the deep copy.
-
-
-## Approach 2: Sorting
-
-**Intuition**
-
-We can sort the numbers in ascending or descending order and then compare each number with the number that comes before it. This approach works because sorting the numbers will make duplicates stay next to each other. This is more efficient that approach 1.
-
-**Algorithm**
-
-1. Sort the array in ascending or decreasing order.
-2. Iterate through the array starting from index 1. 
-3. Compare the current number with the previous number.
-4. If both numbers are equal, we have found a duplicate — return True.
-5. If the loop finishes without detecting equal numbers, return False.
-
-**Solution**
-
-<CodeSwitcher
-  samples={{
-    'Python': `
-from typing import List
-
-class Solution:
-    def containsDuplicate(self, nums: List[int]) -> bool:
-        sorted_nums = sorted(nums)
-        for i in range(1, len(sorted_nums)):
-            if sorted_nums[i] == sorted_nums[i - 1]:
-                    return True
-
-        return False
-    `,
-    'JavaScript': `
-var containsDuplicate = function(nums) {
-    const sortedNums = nums.sort();
-
-    for (let i = 1; i < sortedNums.length; i++) {
-        if (sortedNums[i - 1] === sortedNums[i]) {
-            return true;
-        }
-    }
-
-    return false;
-};
-    `
-  }}
-/>
-
-#### Time complexity: 
-The time complexity is `O(NLogN)` because we sorted the input.
-
-#### Space complexity: 
-The space complexity is `O(1)` or `O(N)` depending on whether or not the sorting was in-place.
-
-> **Note**
-> In some languages, sorting modifies the input data. Be careful of the side effects this might have on your program. 
-> In most cases, it is adviced to make a deep copy of the input and then performing sorting on the deep copy.
-
-
-## Approach 3: Hash Set
-
-**Intuition**
-
-We can take advantage of the constant lookup time for sets. We will iterate through the items and add them to a set, but before we add an
-item, we will check if they already exist in the set, and if the do, return True. After adding all the items, we can then return False.
-
-
-**Algorithm**
-
-1. Create an empty Set to store the numbers.
-2. Iterate through the array. 
-3. Check if the current number already exist in the set.
-4. If the number exists in the set, return True.
-5. If the number does not exist in the set, add it to the set.
-6. When we are done with the iteration, return False.
-
-**Solution**
-
-<CodeSwitcher
-  samples={{
-    'Python': `
-from typing import List
-
-class Solution:
-    def containsDuplicate(self, nums: List[int]) -> bool:
-        num_set = set()
-        for num in nums:
-            if num in num_set:
-                return True
-            num_set.add(num)
-
-        return False
-    `,
-    'JavaScript': `
-var containsDuplicate = function(nums) {
-    const numSet = new Set()
-
-    for (let i = 0; i < nums.length; i++) {
-        if (numSet.has(nums[i])) {
-            return true;
-        }
-        numSet.add(nums[i])
-    }
-
-    return false;
-};
-    `
-  }}
-/>
-
-#### Time complexity: 
-The time complexity is `O(N)`.
-
-#### Space complexity: 
-The space complexity is `O(N)`.
-
-## Approach 4: Length of Hash Set
-
-**Intuition**
-
-We can take advantage of the constant lookup time for sets. We will iterate through the items and add them to a set, but before we add an
-item, we will check if they already exist in the set, and if the do, return True. After adding all the items, we can then return False.
-
-
-**Algorithm**
-
-1. Create a set with the input numbers.
-2. Compare the length of the array to the size of the set.
-3. If the length of the array is not equal to size of the set, it means that duplicates were removed from the set, return True.
-4. Otherwise, return False.
-
-**Solution**
-
-<CodeSwitcher
-  samples={{
-    'Python': `
-from typing import List
-
-class Solution:
-    def containsDuplicate(self, nums: List[int]) -> bool:
-        return len(set(nums)) != len(nums)
-    `,
-    'JavaScript': `
-var containsDuplicate = function(nums) {
-    return new Set(nums).size !== nums.length;
-};
-    `
-  }}
-/>
-
-#### Time complexity: 
-The time complexity is `O(N)`.
-
-#### Space complexity: 
-The space complexity is `O(N)`.
