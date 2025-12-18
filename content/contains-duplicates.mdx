@@ -190,16 +190,14 @@ The space complexity is `O(N)`.
 
 **Intuition**
 
-We can take advantage of the constant lookup time for sets. We will iterate through the items and add them to a set, but before we add an
-item, we will check if they already exist in the set, and if the do, return True. After adding all the items, we can then return False.
-
+We can leverage the fact that sets only accept unique numbers and don't allow duplicates. If we add all the items from the list 
+to the set, and none of the item was removed from the set, it means that the length of the set must be equal to the length of the array.
 
 **Algorithm**
 
 1. Create a set with the input numbers.
 2. Compare the length of the array to the size of the set.
-3. If the length of the array is not equal to size of the set, it means that duplicates were removed from the set, return True.
-4. Otherwise, return False.
+3. If the length of the array is not equal to the size of the set, it means that duplicates were removed from the set, return True, otherwise, return False.
 
 **Solution**
 
