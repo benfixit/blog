@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleAnalytics } from '@next/third-parties/google'
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
 import { PostsProvider } from "@/app/store/PostsProvider";
@@ -37,6 +38,7 @@ export default function RootLayout({
           </LangProvider>
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId="G-37DB2VD15Q" />
     </html>
   );
 }
